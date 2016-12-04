@@ -53,11 +53,13 @@ Na verificação da validação de um ataque, salvo os formatos onde tudo é vá
 
 Como tal, para verificar se um *Pokémon* pode utilizar um ataque que aprende através do método de *breeding*, teria de verificar se o *Pokémon* que permite realizar *breed* é válido no formato que se pretende jogar, e se este aprende o ataque de forma válida. No entanto, com o estado atual do projeto é impossível verificar isto de forma automática, obriga a que sejam feita alterações necessárias à mão, ou alterando a "base de dados", ou criar novas funções
 
-Para resolver o bug, adicionámos as seguintes linhas de código:
+Para resolver o bug, adicionámos as seguintes linhas de código, resolvendo com sucesso o bug:
 
-por aqui imagem lmao
+<p align="center">
+   <img src="https://github.com/Katchau/Pokemon-Showdown/blob/master/ESOF-docs/Resources/bugfix.png?raw=true" />
+</p>
 
-Já faço isto, uma vez que atualizar informação de forma manual de 802 Pokémons é um processo dispendioso, podendo facilmente esquecer de atualizar todos os ataques.
+Este tipo de problemas pode surgir com bastante facilidade, uma vez que atualizar informação de forma manual de 802 Pokémons é um processo dispendioso, podendo facilmente esquecer de atualizar todos os ataques, ou de alterar código para poder adaptar a certas situações.
 É de igual forma difícil de se deparar com um bug desta natureza, devido outra vez à quantidade enorme de Pokémons e ataques herdados, uma vez que não são efetuados testes individuáis de cada um.
 
 ### Conclusão
