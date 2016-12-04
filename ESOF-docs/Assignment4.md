@@ -37,7 +37,9 @@ Nem todos os componentes têm apenas uma responsabilidade no projeto, mas todos 
 
 #### 1.5.Compreensibilidade
 
-Os nomes dados aos *scripts* dos testes por si só são auto-explicativos e permitem perceber facilmente qual o objetivo do teste em questão e portanto são bastantes compreensivos.
+Os nomes dados aos *scripts* dos testes por si só são auto-explicativos e permitem perceber facilmente qual o objetivo do teste em questão e portanto são bastantes compreensivos. 
+
+Para além disso, o correr os ficheiros de teste, está presente uma descrição do que cada teste unitário vai realizar, e qual o resultado expectável, garantido assim que terceiros possam ter uma noção do que está a ser testado.
 
 #### 1.6.Automatização
 
