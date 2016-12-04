@@ -18,13 +18,22 @@ A controlabilidade determina o grau de possibilidade do teste a ser executado.
 #### 1.5.Heterogeneidade
 
 ### 2.Estatísticas de Teste
-O comando que executa os testes unitários do projeto em análise é : *npm test*. Ao correr este é impressa uma lista onde estão descritos todos os testes, neste caso os que passaram(762) e os que ficaram pendentes(6). A imagem que se segue é representativa disto:
+
+No *Pokémon Showdown*, os testes efetuados pelos contribuidores estão presentes na pasta "test" do projeto. Dentro desta, estão presentes de forma organizada por tópicos de interesse distintos (informação relativa a abilidades numa pasta, ataques noutra, etc..).
+Para poder correr estes testes, é utilizado o programa *node.js*, que também é utilizado para poder correr o projeto. Este consegue correr testes graças à existência do plugin *Mocha*.
+
+O comando que executa todos os testes unitários do projeto em análise é : *npm test*. Ao correr este é impressa uma lista onde estão descritos todos os testes, neste caso os que passaram(762) e os que ficaram pendentes(6). A imagem que se segue é representativa disto:
 
 <p align="center">
    <img src="https://github.com/Katchau/Pokemon-Showdown/blob/master/ESOF-docs/Resources/npm%20test%202.png" />
 </p>
 
-Os testes realizados são fruto de *black boxing* e como tal, não tratam de *coverage*, mas sim de funcionalidades, sendo a corbertura deste projeto bastante reduzida.
+É possível também correr apenas um ficheiro de testes, tendo de se deslocar na linha de comandos à pasta desejada, e indicar um ficheiro de testes em específico.
+
+Um dos problemas principais do nosso projeto, em termos de testes, é a negligência da *coverage* do projeto uma vez que  os testes realizados são fruto de *black box testing*.
+Isto é, apenas testam funções que dizem respeito às funcionabilidades que o projeto fornece aos utilizadores. Ou seja, apenas avaliam as funções principais do *Pokémon Showdown*, como por exemplo, mecânicas de combate, se as abilidades funcionam bem, etc.. . Certos aspectos como a criação de um novo *Pokémon*, ou a criação de uma nova abilidade, aspectos que não são fruto de interação com o utilizador, são ignorados em questão de testes.
+
+Desta forma, não é efetuado qualquer tipo de *white box testing*, sendo que a coverage geral do projeto, como podemos observar, é bastante baixa:
 
 <p align="center">
    <img src="https://github.com/Katchau/Pokemon-Showdown/blob/master/ESOF-docs/Resources/coverage.png" />
@@ -66,10 +75,10 @@ No processo de resolução deste problema verificamos alguns problemas no que di
 
 ##Trabalho realizado por:
 
-[Ana Rita Torres](https://github.com/AnaRitaTorres): Contribuição 
+[Ana Rita Torres](https://github.com/AnaRitaTorres): Contribuição 25%
 
-[Diogo Cepa](https://github.com/dcepa95): Contribuição 
+[Diogo Cepa](https://github.com/dcepa95): Contribuição 25%
 
-[João Loureiro](https://github.com/Katchau): Contribução 
+[João Loureiro](https://github.com/Katchau): Contribução 25%
 
-[João Pedro Silva](https://github.com/joaosilva22): Contribuição 
+[João Pedro Silva](https://github.com/joaosilva22): Contribuição 25% 
