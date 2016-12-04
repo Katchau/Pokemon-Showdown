@@ -38,6 +38,30 @@ Os testes de regressão são realizados de forma seletiva sobre determinada sec�
 
 ### 3.Correção do Bug
 
+Na demanda da pesquisa por um bug no nosso projeto, começámos por simular vários cenários de combate, na esperança de encontrar alguma falha, uma vez que este é um dos elementos principais do servidor, sendo assim uma parte sensível a bugs.
+Inicialmente encontramos um bug visual, relativo a uma nova mecânica de ataques denominada por *z-moves*. No entanto, este tratava-se de um bug do client, e não do servidor.
+Depois, decidímos por apenas corrigir um bug que se encontrava nos issues do projeto, mas com insucesso, visto que muitos deles já tinham sido resolvidos, ou então não eram bugs, tendo mesmo perdido tempo a resolver um destes *fake bugs*.
+Durante este ultimo , acabámos por encontrar um bug, tendo sido resolvido com sucesso.
+
+Para poder explicar o bug, é necessário saber 2 conceitos/informações:
+
+- Como já foi referido nos projetos anteriores, para poder efetuar combates com outras pessoas, o utilizador tem de escolher determinado formato, aqual todos os elementos da equipa devem respeitar as regras deste.
+ Para tal, uma das condições necessárias é que todos os ataques escolhidos sejam válidos no formato. Dando um exemplo, o Charizard em 90% dos formatos, nunca pode utilizar o ataque *Surf*.
+Na verificação da validação de um ataque, salvo os formatos onde tudo é válido, é verificado se este é aprendido por evolução ou por *level up* na mesma geração do formato, por transferência de gerações anteriores, por *breed* (método de acasalamento de *Pokémons*) entre *Pokémons* válidos, e se é possível transferir/existir os ataques ou pokémons na geração selecionada.
+
+- O Pokémon Shodown é desprovido de uma base de dados bem estruturada e organizada, isto é, possui um conjunto de *Data Classes* (classes cuja função é de guardarem informação para ser usada por outras classes), sendo impossível em certas situações verificar a existência de certas relações entre classes, obrigando à existência de criação de novas funções.
+
+Como tal, para verificar se um *Pokémon* pode utilizar um ataque que aprende através do método de *breeding*, teria de verificar se o *Pokémon* que permite realizar *breed* é válido no formato que se pretende jogar, e se este aprende o ataque de forma válida. No entanto, com o estado atual do projeto é impossível verificar isto de forma automática, obriga a que sejam feita alterações necessárias à mão, ou alterando a "base de dados", ou criar novas funções
+
+Para resolver o bug, adicionámos as seguintes linhas de código, resolvendo com sucesso o bug:
+
+<p align="center">
+   <img src="https://github.com/Katchau/Pokemon-Showdown/blob/master/ESOF-docs/Resources/bugfix.png?raw=true" />
+</p>
+
+Este tipo de problemas pode surgir com bastante facilidade, uma vez que atualizar informação de forma manual de 802 Pokémons é um processo dispendioso, podendo facilmente esquecer de atualizar todos os ataques, ou de alterar código para poder adaptar a certas situações.
+É de igual forma difícil de se deparar com um bug desta natureza, devido outra vez à quantidade enorme de Pokémons e ataques herdados, uma vez que não são efetuados testes individuáis de cada um.
+
 ### Conclusão
 
 ##Trabalho realizado por:
