@@ -38,29 +38,34 @@ Os testes de regressão são realizados de forma seletiva sobre determinada sec�
 
 ### 3.Correção do Bug
 
-Na demanda da pesquisa por um bug no nosso projeto, começámos por simular vários cenários de combate, na esperança de encontrar alguma falha, uma vez que este é um dos elementos principais do servidor, sendo assim uma parte sensível a bugs.
-Inicialmente encontramos um bug visual, relativo a uma nova mecânica de ataques denominada por *z-moves*. No entanto, este tratava-se de um bug do client, e não do servidor.
-Depois, decidímos por apenas corrigir um bug que se encontrava nos issues do projeto, mas com insucesso, visto que muitos deles já tinham sido resolvidos, ou então não eram bugs, tendo mesmo perdido tempo a resolver um destes *fake bugs*.
-Durante este ultimo , acabámos por encontrar um bug, tendo sido resolvido com sucesso.
 
-Para poder explicar o bug, é necessário saber 2 conceitos/informações:
+Para compreender o problema que procuramos resolver, é necessário ter o conhecimento de algumas das peculiaridades dos jogos Pokémon, e em específico das versões Sun e Moon para a Nintendo 3DS. Tentaremos, portanto, apresentá-las de uma forma abreviada:
 
-- Como já foi referido nos projetos anteriores, para poder efetuar combates com outras pessoas, o utilizador tem de escolher determinado formato, aqual todos os elementos da equipa devem respeitar as regras deste.
- Para tal, uma das condições necessárias é que todos os ataques escolhidos sejam válidos no formato. Dando um exemplo, o Charizard em 90% dos formatos, nunca pode utilizar o ataque *Surf*.
-Na verificação da validação de um ataque, salvo os formatos onde tudo é válido, é verificado se este é aprendido por evolução ou por *level up* na mesma geração do formato, por transferência de gerações anteriores, por *breed* (método de acasalamento de *Pokémons*) entre *Pokémons* válidos, e se é possível transferir/existir os ataques ou pokémons na geração selecionada.
+- Nem todos os Pokémon estão disponíveis nas versões Sun e Moon.
+- Nem todos os ataques de Pokémon estão disponíveis nas versões Sun e Moon.
+- Alguns Pokémon aprendem ataques exclusivamente a partir de outros Pokémon.
+- Os Pokémons que não estão disponíveis podem ser obtidos através de um mecanismo de transferência de versões anteriores, chamado de Pokebank.
+- O Pokebank ainda não se encontra disponível nas versões Sun e Moon.
 
-- O Pokémon Shodown é desprovido de uma base de dados bem estruturada e organizada, isto é, possui um conjunto de *Data Classes* (classes cuja função é de guardarem informação para ser usada por outras classes), sendo impossível em certas situações verificar a existência de certas relações entre classes, obrigando à existência de criação de novas funções.
+Esta conjugação de restrições causa que, em determinados casos, alguns ataques que os Pokémon poderiam utilizar em teoria não podem ser aprendidos por estes já que o Pokémon ou Pokémons que os poderiam ensinar ainda não se encontram presentes no jogo, e ainda não podem ser transferidos.
 
-Como tal, para verificar se um *Pokémon* pode utilizar um ataque que aprende através do método de *breeding*, teria de verificar se o *Pokémon* que permite realizar *breed* é válido no formato que se pretende jogar, e se este aprende o ataque de forma válida. No entanto, com o estado atual do projeto é impossível verificar isto de forma automática, obriga a que sejam feita alterações necessárias à mão, ou alterando a "base de dados", ou criar novas funções
+Acontece que em Pókemon Showdown, mais especificamente no formato 'Gen7 OU', que pretende ser uma simulação fiel dos jogos para Nintendo 3DS, este comportamento não se verificava. Alguns Pokémon utilizavam ataques aos quais não deveriam ter acesso, pelo facto de o Pokebank ainda não estar disponível.
 
-Para resolver o bug, adicionámos as seguintes linhas de código, resolvendo com sucesso o bug:
+Após alguma análise, verificamos que este problema acontecia porque, aquando da criação de uma equipa, a validação dos ataques de cada Pokémon não tinha em conta a sua disponibilidade na geração e no modo de jogo escolhido. Propusemo-nos então a modificar o algoritmo de validação de ataques para ter em conta esta situação. 
+
+Os passos para resolver este problema seriam, então, para cada ataque a validar:
+
+1. Realizar a verificação apenas em modos de jogo da última geração e que não permitam transferência de Pokémon de gerações anteriores.
+2. Verificar se o ataque pode ser ensinado ao Pokémon por qualquer outro presente na geração escolhida.
+3. Marcar o ataque como ilegal se o nenhum Pokémon for encontrado no passo dois.
+
+As modificações que fizemos ao código para implementar esta solução podem ser consultadas na imagem seguinte.
 
 <p align="center">
    <img src="https://github.com/Katchau/Pokemon-Showdown/blob/master/ESOF-docs/Resources/bugfix.png?raw=true" />
 </p>
 
-Este tipo de problemas pode surgir com bastante facilidade, uma vez que atualizar informação de forma manual de 802 Pokémons é um processo dispendioso, podendo facilmente esquecer de atualizar todos os ataques, ou de alterar código para poder adaptar a certas situações.
-É de igual forma difícil de se deparar com um bug desta natureza, devido outra vez à quantidade enorme de Pokémons e ataques herdados, uma vez que não são efetuados testes individuáis de cada um.
+No processo de resolução deste problema verificamos alguns problemas no que diz respeito ao armazenamento de dados. Todos a informação relativa ao jogo encontra-se em ficheiros mal documentados, mantidos à mão e frequentemente modificados, o que aumenta bastante a probabilidade de problemas como o que resolvemos desta vez se repetirem no futuro.
 
 ### Conclusão
 
