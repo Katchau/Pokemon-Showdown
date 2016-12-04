@@ -18,23 +18,14 @@ A controlabilidade determina o grau de possibilidade do teste a ser executado.
 #### 1.5.Heterogeneidade
 
 ### 2.Estatísticas de Teste
+O comando que executa os testes unitários do projeto em análise é : *npm test*. Ao correr este é impressa uma lista onde estão descritos todos os testes, neste caso os que passaram(762) e os que ficaram pendentes(6). A imagem que se segue é representativa disto:
 
-#### 2.1.Testes Unitários
-Os testes unitários testam as menores unidades de *software* desenvolvidas, sendo estas pequenas secções de código ou a unidade definida para o projeto em estudo. O principal objetivo, deste tipo de *testing* é encontrar falhas de funcionamento numa pequena parte do sistema funcionando independentemente do todo.
+<p align="center">
+   <img src="https://github.com/Katchau/Pokemon-Showdown/blob/master/ESOF-docs/Resources/npm%20test%202.png" />
+</p>
 
-#### 2.2.Cobertura de Código
+Os testes realizados são fruto de *black boxing* e como tal, não tratam de *coverage*, mas sim de funcionalidades, sendo a corbertura deste projeto bastante reduzida.
 
-#### 2.3.Testes de Integração
-Os testes de integração visam avaliar a interação entre os componentes de *software* e *hardware*, posto isto, o seu principal desafio é encontrar erros nas unidades de interface.
-
-#### 2.4.Testes de Sistema
-Os testes de sistema consideram a robustez deste, verificando se age em conformidade com requerimentos funcionais de comportamento e qualidade.
-
-#### 2.5.Testes de Aceitação
-Os testes de aceitação são chamados de testes formais, uma vez que têm de estar de acordo com os seus critérios de aceitação, primeiramente e de seguida, são alvo de uma aceitação ou não por parte do cliente final.
-
-#### 2.6.Testes de Regressão
-Os testes de regressão são realizados de forma seletiva sobre determinada secção de código para garantir que qualquer alteração neste não causou nenhum distúrbio ou mau funcionamento do que estava, anteriormente, imlplementado.
 
 ### 3.Correção do Bug
 
