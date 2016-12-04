@@ -26,6 +26,10 @@ O comando que executa os testes unitários do projeto em análise é : *npm test
 
 Os testes realizados são fruto de *black boxing* e como tal, não tratam de *coverage*, mas sim de funcionalidades, sendo a corbertura deste projeto bastante reduzida.
 
+<p align="center">
+   <img src="https://github.com/Katchau/Pokemon-Showdown/blob/master/ESOF-docs/Resources/coverage.png" />
+</p>
+
 
 ### 3.Correção do Bug
 
