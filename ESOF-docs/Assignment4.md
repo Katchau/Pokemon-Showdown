@@ -10,11 +10,11 @@
 ### 1.Grau de Testabilidade
 
  Neste tópico será abordado o grau de testabilidade do projeto, isto é, o grau de facilidade de desenvolvimento dos seus testes. 
- Analizando os módulos do *Pokemon Showdown* verificamos que os testes apenas podem ser aplicados aos seus sub-componentes devido a complexidade e, por vezes, multifuncionalidade destes. Para realizar estes testes utilizam eslint e npm test.
+ Analisando os módulos do *Pokémon Showdown* verificamos que os testes apenas podem ser aplicados aos seus sub-componentes devido a complexidade e, por vezes, multifuncionalidade destes. Para realizar estes testes utilizam *eslint* e *npm test*.
 
 #### 1.1.Controlabilidade
 
- A controlabilidade dos componentes sob teste (CUT - Componentes Under Test) depende da complexidade e da interação com outros módulos do componente em questão. Quanto maior a complexidade e quantas mais interações tiver o componente mais baixa será a sua controlabilidade nos testes. 
+ A controlabilidade dos componentes sob teste (*CUT - Componentes Under Test*) depende da complexidade e da interação com outros módulos do componente em questão. Quanto maior a complexidade e quantas mais interações tiver o componente mais baixa será a sua controlabilidade nos testes. 
  Neste projeto, apenas se usa testes unitários e como nestes testes é possível aceder e controlar os estados de um objeto podemos afirmar que o componente tem um controlabilidade boa, excepto quando este utiliza módulos externos que se tornam impossíveis de aceder.
 
 #### 1.2.Observabilidade
@@ -28,16 +28,16 @@ Conclui-se assim que há uma boa observabilidade sobre os testes realizados.
 
 Para poder ser efetuada a realização de testes, foi necessária a criação de um *environment test*, onde apenas estão presentes os elementos que pretendem ser testados, em ficheiros de teste separados.
 Ou seja, são criados objetos do que se quer testar para um ficheiro(caso estes não existam), e invoca-se funções ou simula-se alguma situação, à qual já se sabe o resultado, e efetua-se os testes para poder comprovar o bom funcionamento.
-Por exemplo, para testar a validação da equipa, foi criado um ficheiro de testes chamado team-validator, onde se cria uma equipa, adicionando-lhe *Pokémons*, para poder depois invocar a função do objeto TeamValidator, para poder observar o resultado, e verificar se está correto.
-Assim facilita o processo de testes de uma parte especifica melhorando muito a organização.
+Por exemplo, para testar a validação da equipa, foi criado um ficheiro de testes chamado *team-validator*, onde se cria uma equipa, adicionando-lhe *Pokémons*, para poder depois invocar a função do objeto *TeamValidator*, para poder observar o resultado, e verificar se está correto.
+Assim facilita o processo de testes de uma parte especifica melhorando bastante a organização.
 
 #### 1.4.Separação de responsabilidades
 
-Nem todos os componentes têm apenas uma resposabilidade no projeto, mas todos os testes têm o objetivo de verificar apenas uma das funcionalidades possíveis desse componente que interessam testar. Ou seja, os testes concentram-se em aspetos especificos de cada componente.
+Nem todos os componentes têm apenas uma responsabilidade no projeto, mas todos os testes têm o objetivo de verificar apenas uma das funcionalidades possíveis desse componente que interessam testar. Ou seja, os testes concentram-se em aspetos específicos de cada componente.
 
 #### 1.5.Compreensibilidade
 
-Os nomes dados aos scripts dos testes por si só são auto-explicativos e permitem perceber facilmente qual o objetivo do teste em questão e portanto são bastantes compreensivos.
+Os nomes dados aos *scripts* dos testes por si só são auto-explicativos e permitem perceber facilmente qual o objetivo do teste em questão e portanto são bastantes compreensivos.
 
 #### 1.6.Automatização
 
@@ -102,6 +102,10 @@ As modificações que fizemos ao código para implementar esta solução podem s
 No processo de resolução deste problema verificamos alguns problemas no que diz respeito ao armazenamento de dados. Todos a informação relativa ao jogo encontra-se em ficheiros mal documentados, mantidos à mão e frequentemente modificados, o que aumenta bastante a probabilidade de problemas como o que resolvemos desta vez se repetirem no futuro.
 
 ### Conclusão
+Embora o processo de corrigir o *bug* tenha sido demorado e desafiante foi concluído com sucesso pelo grupo. 
+Apercebemo-nos também que durante a realização deste relatório que o *testing* do projeto *Pokémon Showdown* não é o mais adequado, 
+nem eficaz e portanto, surgiram algumas dificuldades na avaliação da cobertura deste, assim como relativo ao grau de testabilidade.
+
 
 ##Trabalho realizado por:
 
