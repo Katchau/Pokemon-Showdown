@@ -65,6 +65,14 @@ Este é um problema constante ao longo do código fonte, e um dos principais con
    <img src="https://github.com/Katchau/Pokemon-Showdown/blob/master/ESOF-docs/Resources/bettercodehub%20results/teste3.png?raw=true" />
 </p>
 
+Os ficheiros que causam a maioria das falhas neste teste são usados para guardar informação sobre Pokémons situados no diretório `/data` com a exceção do ficheiro `chat-commands.js`. Esta informação que deveria pertencer a uma base de dados é representada sobre a forma de objectos JavaScript. 
+
+O facto de diferentes Pokémons podem ter informação muito semelhante ou até mesmo igual leva a que existam muitas linhas de código repetidos e portanto vários erros neste teste.
+
+Contudo, estes ficheiros são usados puramente como informação estática e raramente irão sofrer alterações no código já implementado o que nos indica que não representam problemas para a manutenção do código.
+
+Relativamente ao ficheiro `chat-commands.js` não podemos afirmar o mesmo, embora esteja especificado que não seja suposto modificar este ficheiro por apenas possuir comandos de chat base. Se encontrados *bugs* ou necessidade de alterações em excertos de código repetidos o facto de estas réplicas existirem,  estes iriam provocar dificuldades na manutenção do código pois iriam precisar de ser alteradas todas as réplicas do excerto, além de provocar grande diminuição da legibilidade do código.
+
 <p align="center">
    <img src="https://github.com/Katchau/Pokemon-Showdown/blob/master/ESOF-docs/Resources/bettercodehub%20results/teste6.png?raw=true" />
 </p>
