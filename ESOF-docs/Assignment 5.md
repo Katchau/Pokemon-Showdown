@@ -3,7 +3,9 @@
 
 ## [Pokémon Showdown](https://www.pokemonshowdown.com)
 
-# Falta por a cena do code hub, mas o site tá todo comido 
+<p align="center">
+   <img src="https://github.com/Katchau/Pokemon-Showdown/blob/master/ESOF-docs/Resources/bettercodehub%20results/bchbadge.png?raw=true" />
+</p>
 
 ### Introdução
 Para o último relatório da unidade curricular, procedemos à escolha e, mais tarde implementação de um funcionalidade que do nosso ponto de vista é uma adição interessante ao projeto "Pokémon Showdown". Durante o relatório será efetuada uma análise deste processo e no fim, conclusões relevantes relativas ao mesmo.
@@ -41,7 +43,7 @@ Como podemos observar, o "Pokémon Showdown" mantém unidades de interface peque
 No entanto surge uma dúvida quanto ao último teste, discordando da veracidade deste. Isto porque ao analisar o código que foi omitido verifica-se a existência de código repetido, vários *code smells* (os próprios ficheiros são protótipos de classes "base de dados"), constantes mágicas, entre outros. Ou seja, seria provável que este teste falhasse, caso fosse possível avaliar o projeto na totalidade.
 
 
-<p align="center">
+<p align="justify">
    <img src="https://github.com/Katchau/Pokemon-Showdown/blob/master/ESOF-docs/Resources/bettercodehub%20results/teste1.png?raw=true" />
 </p>
 
@@ -88,7 +90,10 @@ Posto isto, optamos por introduzir um *plugin* novo ao *chat* de "Pokémon Showd
 
 Restava agora escolher qual seria o comando em específico que queriamos introduzir no jogo. Uma situação imediatamente chamou a nossa atenção, fruto da familiaridade que ganhamos com o projeto durante os últimos meses: Todos os dias o servidor reinicia por volta da 00h00 ou 01h00, hora local; Acontece que até ao momento era impossível saber, em determindado momento, qual era a hora atual do servidor. Daí surgiu a ideia de oferecermos ao utilizador a possiblidade de saber a hora do servidor através da escrita de `/servertime` em qualquer sala de chat do jogo.
 
-[Imagem do comando a funcionar]
+<p align="center">
+   <img src="https://github.com/Katchau/Pokemon-Showdown/blob/master/ESOF-docs/Resources/command.png?raw=true" />
+</p>
+(figura do *output* do comando implementado)
 
 #### 2.2. Identificação do Código a Modificar
 
