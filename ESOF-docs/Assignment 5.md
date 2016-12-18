@@ -3,9 +3,7 @@
 
 ## [Pokémon Showdown](https://www.pokemonshowdown.com)
 
-<p align="justify">
-   <img src="https://github.com/Katchau/Pokemon-Showdown/blob/master/ESOF-docs/Resources/bettercodehub%20results/bchbadge.png?raw=true" />
-</p>
+[![BCH compliance](https://bettercodehub.com/edge/badge/Katchau/betterCodeHubTeste)](https://bettercodehub.com)
 
 ### Introdução
 Para o último relatório da unidade curricular, procedemos à escolha e, mais tarde implementação de um funcionalidade que do nosso ponto de vista é uma adição interessante ao projeto "Pokémon Showdown". Durante o relatório será efetuada uma análise deste processo e no fim, conclusões relevantes relativas ao mesmo.
