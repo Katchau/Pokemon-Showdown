@@ -326,7 +326,7 @@ class Validator {
 					let problem = this.checkLearnset(move, template, lsetData);
 					if (problem) {
 						// Sketchmons hack
-						if (banlistTable['allowonesketch'] && !set.sketchmonsMove && !move.noSketch && !move.isZ) {
+						if (banlistTable['allowonesketch'] && format.noSketch.indexOf(move.name) <= 0 && !set.sketchmonsMove && !move.noSketch && !move.isZ) {
 							set.sketchmonsMove = move.id;
 							continue;
 						}
@@ -703,7 +703,7 @@ class Validator {
 			alreadyChecked[template.speciesid] = true;
 			if (tools.gen === 2 && template.gen === 1) tradebackEligible = true;
 			// STABmons hack to avoid copying all of validateSet to formats
-			if (format.banlistTable && format.banlistTable['ignorestabmoves'] && !(moveid in {'acupressure':1, 'chatter':1}) && !move.isZ) {
+			if (format.banlistTable && format.banlistTable['ignorestabmoves'] && !(moveid in {'acupressure':1, 'chatter':1, 'geomancy':1, 'shellsmash':1, 'shiftgear':1, 'thousandarrows':1}) && !move.isZ) {
 				let types = template.types;
 				if (template.baseSpecies === 'Rotom') types = ['Electric', 'Ghost', 'Fire', 'Water', 'Ice', 'Flying', 'Grass'];
 				if (template.baseSpecies === 'Shaymin') types = ['Grass', 'Flying'];
@@ -783,7 +783,8 @@ class Validator {
 					} else if (learned.charAt(1) === 'E') {
 						// egg moves:
 						//   only if that was the source
-						if (learnedGen >= 6 || lsetData.fastCheck) {
+						const noPastGenBreeding = noPastGen && tools.gen === 7;
+						if ((learnedGen >= 6 && !noPastGenBreeding) || lsetData.fastCheck) {
 							// gen 6 doesn't have egg move incompatibilities except for certain cases with baby Pokemon
 							learned = learnedGen + 'E' + (template.prevo ? template.id : '');
 							sources.push(learned);
@@ -810,14 +811,19 @@ class Validator {
 							if (dexEntry.gender === 'N' || dexEntry.gender === 'F') continue;
 							// can't inherit from dex entries with no learnsets
 							if (!dexEntry.learnset) continue;
-							// unless it's supposed to be self-breedable, can't inherit from self, prevos, etc
+							// unless it's supposed to be self-breedable, can't inherit from self, prevos, evos, etc
 							// only basic pokemon have egg moves, so by now all evolutions should be in alreadyChecked
 							if (!fromSelf && alreadyChecked[dexEntry.speciesid]) continue;
+							if (!fromSelf && dexEntry.evos.includes(template.id)) continue;
+							if (!fromSelf && dexEntry.prevo === template.id) continue;
 							// father must be able to learn the move
 							if (!fromSelf && !dexEntry.learnset[moveid] && !dexEntry.learnset['sketch']) continue;
 
 							// must be able to breed with father
 							if (!dexEntry.eggGroups.some(eggGroup => eggGroupsSet.has(eggGroup))) continue;
+
+							const fatherLatestMoveGen = (dexEntry.learnset[moveid] ? dexEntry.learnset[moveid][0].charAt(0) : dexEntry.learnset['sketch'][0].charAt(0));
+							if (noPastGenBreeding && (dexEntry.tier.startsWith('Bank') || fatherLatestMoveGen !== '7')) continue;
 
 							// we can breed with it
 							atLeastOne = true;
@@ -831,6 +837,7 @@ class Validator {
 						// chainbreeding with itself
 						// e.g. ExtremeSpeed Dragonite
 						if (!atLeastOne) {
+							if (noPastGenBreeding) continue;
 							sources.push(learned + template.id);
 							limitedEgg = 'self';
 						}
