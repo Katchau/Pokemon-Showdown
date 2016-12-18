@@ -21,11 +21,20 @@ Os 10 parâmetros de avaliação que o *BetterCode Hub* realiza referem-se à es
 - Arquitetura com componentes independentes e equilibradas
 - Boa cobertura de Testes Automáticos
 
-Uma vez que esta ferramenta aínda é recente, foram encontrados vários erros(página não carregava, dava erro a analisar) e limitações(limite de 100 mil linhas de código) que nos obrigaram a efetuar alterações no projeto, de forma a que esta podesse ser executada. Como tal, criámos um novo repositório, onde removemos uma parte do projeto menos importante (classes "base de dados" cuja utilidade é de guardar informação de gerações anteriores para jogar modos antigos de jogo), e conseguimos efetuar a avaliação, obtendo a seguinte nota:
+Uma vez que esta ferramenta aínda é recente, foram encontrados vários erros(página não carregava, dava erro a analisar) e limitações(limite de 100 mil linhas de código) que nos obrigaram a efetuar alterações no projeto, de forma a que esta podesse ser executada. Como tal, criámos um novo repositório, onde removemos uma parte do projeto menos importante (classes "base de dados" cuja utilidade é de guardar informação de gerações anteriores para jogar modos antigos de jogo), e obtemos a seguinte avaliação:
 
-link da imagem
+<p align="center">
+   <img src="https://github.com/Katchau/Pokemon-Showdown/blob/master/ESOF-docs/Resources/bettercodehub%20results/bch_grade.png?raw=true" />
+</p>
 
-Devido á alteração do projeto, existem certos parâmetros que foram influenciados beneficamente, especialmente o teste de *Clean Code*, uma vez que ao analisar esse código, verifica-se a existência de código repetido, vários *code smells* (os próprios ficheiros são protótipos de classes "base de dados"), constantes mágicas, entre outros.(Se calhar por esta parte só na parte do Write Clean Code?)
+Como podemos observar, o *Pokémon Showdown* obteve uma nota intermédia, no limiar daquilo a que poderia chamar-se aceitável. Isto indica que existem aspetos onde este projeto pode melhorar bastante. 
+De mencionar que esta avaliação não representa a nota final correta, uma vez que o projeto não foi avaliado na íntegra, como já foi esclarecido no parágrafo anterior, levantando-se assim uma dúvida acerca da legitimidade do teste.
+
+[imagem dos testes que passaram]
+
+Na figura anterior estão presentes todos os testes que obtiveram resultados positivos.[falar dos aspetos positivos]
+No entanto, discordamos da veracidade do último teste,visto que ao analisar o código que foi omitido verifica-se a existência de código repetido, vários *code smells* (os próprios ficheiros são protótipos de classes "base de dados"), constantes mágicas, entre outros. Ou seja, seria possível que este teste falhásse, caso fosse possível avaliar o projeto na totalidade.
+
 
 ### 2. Introdução de uma Nova Funcionalidade
 
