@@ -61,6 +61,11 @@ Este é um problema constante ao longo do código fonte, e um dos principais con
    <img src="https://github.com/Katchau/Pokemon-Showdown/blob/master/ESOF-docs/Resources/bettercodehub%20results/teste2.png?raw=true" />
 </p>
 
+A falha neste teste resulta principalmente de um numero elevado de *branches* do tipo *if* e *for*, mas maioritariamente o tipo *if*.
+Este uso excessivo resulta das várias condicionantes do seguimento do programa, por exemplo, um movimento de um pokemon pode ser condicionado por vários fatores, e existindo um *branch* do tipo *if* para cada um origina a que o numero de *branches* ultrapasse o exigido pelo teste.
+
+Assim sendo, a existência de tantos branches torna a manutenção do código uma tarefa difícil, e piora significativamente a sua legibilidade. A separação destas condições em módulos diferentes poderia facilitar ambas as coisas e ainda tornar a realização de testes mais fácil.
+
 <p align="center">
    <img src="https://github.com/Katchau/Pokemon-Showdown/blob/master/ESOF-docs/Resources/bettercodehub%20results/teste3.png?raw=true" />
 </p>
