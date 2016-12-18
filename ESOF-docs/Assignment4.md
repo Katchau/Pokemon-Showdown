@@ -103,6 +103,8 @@ As modificações que fizemos ao código para implementar esta solução podem s
 
 No processo de resolução deste problema verificamos alguns problemas no que diz respeito ao armazenamento de dados. Todos a informação relativa ao jogo encontra-se em ficheiros mal documentados, mantidos à mão e frequentemente modificados, o que aumenta bastante a probabilidade de problemas como o que resolvemos desta vez se repetirem no futuro.
 
+Link do *Pull Request*:  https://github.com/Zarel/Pokemon-Showdown/pull/2983
+
 ### Conclusão
 Embora o processo de corrigir o *bug* tenha sido demorado e desafiante foi concluído com sucesso pelo grupo. 
 Apercebemo-nos também que durante a realização deste relatório que o *testing* do projeto *Pokémon Showdown* não é o mais adequado, 
