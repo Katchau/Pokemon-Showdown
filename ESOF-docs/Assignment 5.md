@@ -30,7 +30,7 @@ Tendo em conta que a funcionalidade se relacionava com o chat, começamos a busc
 No cabeçalho deste ficheiro pode ser lido:
 
 > This handles chat and chat commands sent from users to chatrooms and PMs
-> Individual commands are put in:
+Individual commands are put in:
  *   chat-commands.js - "core" commands that shouldn't be modified
  *   chat-plugins/ - other commands that can be safely modified
 
