@@ -51,7 +51,7 @@ Em primeiro lugar, consideramos importante consultar a API de introdução de no
 
 > Commands have access to the following functions:
 * this.sendReply(message)
-..* Sends a message back to the room the user typed the command into.
+  * Sends a message back to the room the user typed the command into.
 
 Verificamos assim que enviar uma resposta a um comando de um utilizador era tão simples como utilizar `this.sendReply(message)`.
 
