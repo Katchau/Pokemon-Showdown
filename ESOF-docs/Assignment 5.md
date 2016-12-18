@@ -10,24 +10,24 @@ Para o último relatório da unidade curricular, procedemos à escolha e, mais t
 
 ### 1.Manutenção de Software
 
-No âmbito de avaliar qualidade de código do nosso projeto, foi utilizado o website [BetterCodeHub](bettercodehub.com). O objetivo principal deste é de testar 10 parâmetros distintos de boas condutas de código, especificamente à escrita, organização, legibilidade, e fácil manipulação de código, e atribuir uma nota ao projeto que foi avaliado, mencionando quais fatores precisam de ser melhorados no código para poder obter uma avaliação melhor.
+No âmbito de avaliar a qualidade do código do projeto, foi utilizado o *website* [BetterCodeHub](bettercodehub.com). O objetivo principal deste é de testar 10 parâmetros distintos de boas condutas de código, especificamente a escrita, a organização, a legibilidade, a fácil manipulação de código, e atribuir uma nota ao projeto que foi avaliado, mencionando quais os fatores que precisam de ser melhorados para que este possa obter uma avaliação melhor.
 
 Resumidamente, os parâmetros a serem avaliados são os seguintes:
 
 - Escrever código de forma simples e organizada;
-- Evitar repetições e a existência de "muros" de código, bem como mantê-lo legível, sem necessidade de haver código inútil.
+- Evitar repetições e a existência de "muros" de código, bem como mantê-lo legível, sem necessidade de haver código inútil;
 - Manter unidades de interface pequenas;
-- Separar funcionalidades em módulos
-- Arquitetura com componentes independentes e equilibradas
-- Boa cobertura de Testes Automáticos
+- Separar funcionalidades em módulos;
+- Arquitetura com componentes independentes e equilibradas;
+- Boa cobertura de testes automáticos.
 
-Uma vez que esta ferramenta aínda é recente, foram encontrados vários erros(página não carregava, dava erro a analisar) e limitações(limite de 100 mil linhas de código) que nos obrigaram a efetuar alterações no projeto, de forma a que esta podesse ser executada. Como tal, criámos um novo repositório, onde removemos uma parte do projeto menos importante (classes históricas cuja utilidade é de guardar informação de gerações anteriores para jogar modos antigos de jogo), e obtemos a seguinte avaliação:
+Uma vez que esta ferramenta é, relativamente, recente foram encontrados vários erros(impossível efetuar *load* da página , dava erro a analisar) e limitações(limite de 100 mil linhas de código) que nos obrigaram a efetuar alterações no projeto, de forma a que esta podesse ser executada. Como tal, criámos um novo repositório, onde removemos uma parte do projeto menos importante (classes históricas cuja utilidade é de guardar informação de gerações anteriores para jogar modos antigos de jogo), e obtemos a seguinte avaliação:
 
 <p align="center">
    <img src="https://github.com/Katchau/Pokemon-Showdown/blob/master/ESOF-docs/Resources/bettercodehub%20results/bch_grade.png?raw=true" />
 </p>
 
-Como podemos observar, o *Pokémon Showdown* obteve uma nota intermédia, no limiar daquilo a que poderia chamar-se aceitável. Isto indica que existem aspetos onde este projeto pode melhorar bastante. 
+Como podemos observar, o "Pokémon Showdown" obteve uma nota intermédia, no limiar daquilo a que poderia chamar-se aceitável. Isto indica que existem aspetos onde este projeto pode melhorar bastante. 
 De mencionar que esta avaliação não representa a nota final correta, uma vez que o projeto não foi avaliado na íntegra, como já foi esclarecido no parágrafo anterior, levantando-se assim uma dúvida acerca da legitimidade do teste.
 
 <p align="center">
@@ -36,9 +36,9 @@ De mencionar que esta avaliação não representa a nota final correta, uma vez 
 
 Nesta figura estão presentes todos os testes que obtiveram resultados positivos.
 
-Como podemos observar, o *Pokémon Showdown* mantém unidades de interface pequenas, facilitando a perceptibilidade das funções e a sua reutilização. Apresenta também uma boa organização em termos de módulos/funcionalidades, sendo possível identificar e de separar diferentes módulos de forma mais eficaz. No 3º teste, podemos concluir que o *Pokémon Showdown* possui uma boa organização em termos de componentes, sendo esta feita de acordo com as funções que cada componente é responsável. No 4º teste positivo, podemos verificar que este projeto tem uma base de código pequena, relativamente ao nº de pessoas que colabora no projeto, evitando que a responsabilidade de cada pessoa aumente, mantendo o crescimento do projeto ascendente.
+Como podemos observar, o "Pokémon Showdown" mantém unidades de interface pequenas, facilitando a perceptibilidade das funções e a sua reutilização. Apresenta também uma boa organização em termos de módulos/funcionalidades, sendo possível identificar e de separar diferentes módulos de forma mais eficaz. No 3º teste, podemos concluir que o *Pokémon Showdown* possui uma boa organização em termos de componentes, sendo esta feita de acordo com as funções que cada componente é responsável. No 4º teste positivo, podemos verificar que este projeto tem uma base de código pequena, relativamente ao número de pessoas que colabora no projeto, evitando que a responsabilidade de cada pessoa aumente, mantendo o crescimento do projeto ascendente.
 
-No entanto surge uma dúvida quanto ao último teste, discordando da veracidade deste. Isto porque ao analisar o código que foi omitido verifica-se a existência de código repetido, vários *code smells* (os próprios ficheiros são protótipos de classes "base de dados"), constantes mágicas, entre outros. Ou seja, seria provável que este teste falhásse, caso fosse possível avaliar o projeto na totalidade.
+No entanto surge uma dúvida quanto ao último teste, discordando da veracidade deste. Isto porque ao analisar o código que foi omitido verifica-se a existência de código repetido, vários *code smells* (os próprios ficheiros são protótipos de classes "base de dados"), constantes mágicas, entre outros. Ou seja, seria provável que este teste falhasse, caso fosse possível avaliar o projeto na totalidade.
 
 
 <p align="center">
@@ -66,15 +66,15 @@ No entanto surge uma dúvida quanto ao último teste, discordando da veracidade 
 
 #### 2.1. Escolha da Funcionalidade a Implementar
 
-A identificação de uma funcionalidade a implementar em Pokémon-Showdown revelou-se um problema mais complicado do que o anticipado. Isto porque o repositório para o qual decidimos contribuir não guarda todo o código relativo ao jogo, mas apenas o código relativo ao servidor. Isto significa que uma funcionalidade implementada no servidor pode não ser visível ao utilizador sem alterações ao código do cliente.
+A identificação de uma funcionalidade a implementar em "Pokémon Showdown" revelou-se um problema mais complicado do que o anticipado. Isto porque o repositório para o qual decidimos contribuir não guarda todo o código relativo ao jogo, mas apenas o código relativo ao servidor. Isto significa que uma funcionalidade implementada no servidor pode não ser visível ao utilizador sem alterações ao código do cliente.
 
 Num esforço para tentar manter as alterações a efetuar contidas apenas no âmbito do repositório que temos vindo a analisar, o nosso foco mudou para os módulos que são completamente implementados no servidor. Esta mudança de perspectiva deixou-nos com apenas duas possibilades realísticas:
 * Implementar um novo modo de jogo
 * Adicionar um chat plugin
 
-Rapidamente demos conta que implementar um novo modo de jogo não sería uma boa escolha por várias razões, mas principalmente pelo tempo que iria ser necessário para implementar e testar uma alteração desse tamanho. Para além disso era uma modificação que iria necessitar de um consenso entre os principais contribuidores para o projeto, o que nem sempre é fácil conseguir, especialmente com tão pouco tempo para debate.
+Rapidamente nos apercebemos que implementar um novo modo de jogo não sería uma boa escolha por várias razões, principalmente pelo tempo que iria ser necessário para implementar e testar uma alteração desta dimensão. Para além disso era uma modificação que iria necessitar de um consenso entre os principais contribuidores para o projeto, o que nem sempre é fácil conseguir, especialmente com tão pouco tempo para debate.
 
-Posto isto, optamos por introduzir um plugin novo ao chat de Pokémon Showdown. Consideramos que esta escolha nos providenciava com a razão acertada entre complexidade de implementação e utilidade para o projeto, visto que a implementação se previa relativamente simples e as possiblidades eram vastas.
+Posto isto, optamos por introduzir um *plugin* novo ao *chat* de "Pokémon Showdown". Consideramos que esta escolha nos providenciava com a razão acertada entre complexidade de implementação e utilidade para o projeto, visto que a implementação se previa relativamente simples e as possiblidades eram vastas.
 
 Restava agora escolher qual seria o comando em específico que queriamos introduzir no jogo. Uma situação imediatamente chamou a nossa atenção, fruto da familiaridade que ganhamos com o projeto durante os últimos meses: Todos os dias o servidor reinicia por volta da 00h00 ou 01h00, hora local; Acontece que até ao momento era impossível saber, em determindado momento, qual era a hora atual do servidor. Daí surgiu a ideia de oferecermos ao utilizador a possiblidade de saber a hora do servidor através da escrita de `/servertime` em qualquer sala de chat do jogo.
 
