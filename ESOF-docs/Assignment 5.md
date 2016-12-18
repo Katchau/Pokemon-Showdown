@@ -158,16 +158,22 @@ servertime: function (target, room, user) {
 
 ### 3.Submissão do *Pull Request*
 
-Foi realizado um [*Pull Request*](https://github.com/Zarel/Pokemon-Showdown/pull/3038) para o github do projeto "Pokémon Showdown", este de momento encontra-se pendente, embora a equipa se tenha mostrado recetiva à alteração sugerida.
+Foi realizado um [*Pull Request*](https://github.com/Zarel/Pokemon-Showdown/pull/3038) para o github do projeto "Pokémon Showdown".
+Na realização deste foram-nos impostas [condições de contribuição](https://github.com/Zarel/Pokemon-Showdown/blob/master/CONTRIBUTING.md) que impõem alguma uniformidade de código e que foram alvo de preocupação por parte do grupo. Um dos contribuidores reagiu de forma positiva à nossa implemetação, que embora não fosse uma *feature* de dificuldade elevada é um contributo útil para o projeto.
+
 
 ### Conclusão
+Como já foi referido, anteriormente, o grupo acredita que a implementação realizada, embora simples é útil e, portanto consideramos que o grande objetivo deste último trabalho foi concluído.
+
+De uma forma geral foi gratificante desenvolver estes relatórios ao longo da unidade curricular de Engenharia de *Software*, uma vez que o "Pókemon Showdown" demonstrou ser um projeto ativo, interativo e acima de tudo aplicável às situações estudadas.
+
 
 ##Trabalho realizado por:
 
-[Ana Rita Torres](https://github.com/AnaRitaTorres): Contribuição 
+[Ana Rita Torres](https://github.com/AnaRitaTorres): Contribuição 25%
 
-[Diogo Cepa](https://github.com/dcepa95): Contribuição 
+[Diogo Cepa](https://github.com/dcepa95): Contribuição 25%
 
-[João Loureiro](https://github.com/Katchau): Contribução 
+[João Loureiro](https://github.com/Katchau): Contribução 25% 
 
-[João Pedro Silva](https://github.com/joaosilva22): Contribuição 
+[João Pedro Silva](https://github.com/joaosilva22): Contribuição 25% 
