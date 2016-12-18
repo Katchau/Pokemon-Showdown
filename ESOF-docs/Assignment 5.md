@@ -73,6 +73,11 @@ Este é um problema constante ao longo do código fonte, e um dos principais con
    <img src="https://github.com/Katchau/Pokemon-Showdown/blob/master/ESOF-docs/Resources/bettercodehub%20results/teste9.png?raw=true" />
 </p>
 
+Não é surpresa que este teste tenha falhado, uma vez que no *Assignment* 4 já fora discutido o tema dos testes automáticos, onde se chegou à conclusão de que os testes automáticos eram negligenciados, uma vez que os testes servem apenas para testar as mecânicas de jogo, nomeadamente validação de equipas, mecânicas de combate, entre outros, ficando muitas linhas de código por testar.
+
+Outro motivo pela qual isto acontece deve-se ao excesso de código repetido, que proporciona a diminuição de *test code percentage*, uma vez que as situações onde se visualiza repetição de código são em sítios onde não ocorre qualquer tipo de testes, como por exemplo o learnsets.js
+
+Ou seja, a percentagem de linhas de teste é bastante baixo a comparar com aquilo que era pretendido para um trabalho desta dimensão (7% contra os >50% pretendidos).
 
 ### 2. Introdução de uma Nova Funcionalidade
 
