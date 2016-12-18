@@ -3,7 +3,7 @@
 
 ## [Pokémon Showdown](https://www.pokemonshowdown.com)
 
-<p align="center">
+<p align="justify">
    <img src="https://github.com/Katchau/Pokemon-Showdown/blob/master/ESOF-docs/Resources/bettercodehub%20results/bchbadge.png?raw=true" />
 </p>
 
@@ -43,7 +43,7 @@ Como podemos observar, o "Pokémon Showdown" mantém unidades de interface peque
 No entanto surge uma dúvida quanto ao último teste, discordando da veracidade deste. Isto porque ao analisar o código que foi omitido verifica-se a existência de código repetido, vários *code smells* (os próprios ficheiros são protótipos de classes "base de dados"), constantes mágicas, entre outros. Ou seja, seria provável que este teste falhasse, caso fosse possível avaliar o projeto na totalidade.
 
 
-<p align="justify">
+<p align="center">
    <img src="https://github.com/Katchau/Pokemon-Showdown/blob/master/ESOF-docs/Resources/bettercodehub%20results/teste1.png?raw=true" />
 </p>
 
