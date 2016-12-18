@@ -55,7 +55,7 @@ exports.BattleFormatsData = {
 		tier: "Bank-NFE",
 	},
 	charizard: {
-		randomBattleMoves: ["fireblast", "airslash", "focusblast", "roost", "swordsdance", "flareblitz", "acrobatics", "earthquake"],
+		randomBattleMoves: ["fireblast", "airslash", "focusblast", "roost", "swordsdance", "flamecharge", "acrobatics", "earthquake", "willowisp"],
 		randomDoubleBattleMoves: ["heatwave", "fireblast", "airslash", "overheat", "dragonpulse", "roost", "tailwind", "protect"],
 		eventPokemon: [
 			{"generation": 3, "level": 70, "moves":["wingattack", "slash", "dragonrage", "firespin"]},
@@ -293,6 +293,7 @@ exports.BattleFormatsData = {
 			{"generation": 6, "level": 99, "isHidden": false, "moves":["happyhour", "playnice", "holdhands", "flash"], "pokeball": "cherishball"},
 			{"generation": 6, "level": 10, "isHidden": false, "moves":["fly", "surf", "agility", "celebrate"], "pokeball": "cherishball"},
 			{"generation": 6, "level": 10, "isHidden": false, "moves":["bestow", "holdhands", "return", "playnice"], "pokeball": "healball"},
+			{"generation": 7, "level": 10, "nature": "Jolly", "isHidden": false, "moves":["celebrate", "growl", "playnice", "quickattack"], "pokeball": "cherishball"},
 		],
 		tier: "NFE",
 	},
@@ -431,6 +432,9 @@ exports.BattleFormatsData = {
 		tier: "Bank-LC",
 	},
 	vulpixalola: {
+		eventPokemon: [
+			{"generation": 7, "level": 10, "isHidden": false, "moves":["celebrate", "tailwhip", "babydolleyes", "iceshard"], "pokeball": "cherishball"},
+		],
 		tier: "LC",
 	},
 	ninetales: {
@@ -1380,6 +1384,7 @@ exports.BattleFormatsData = {
 			{"generation": 5, "level": 50, "gender": "F", "nature": "Hardy", "isHidden": false, "abilities":["adaptability"], "moves":["sing", "return", "echoedvoice", "attract"], "pokeball": "cherishball"},
 			{"generation": 6, "level": 10, "isHidden": false, "moves":["celebrate", "sandattack", "babydolleyes", "swift"], "pokeball": "cherishball"},
 			{"generation": 6, "level": 15, "shiny": true, "isHidden": true, "moves":["swift", "quickattack", "babydolleyes", "helpinghand"], "pokeball": "cherishball"},
+			{"generation": 7, "level": 10, "nature": "Jolly", "isHidden": false, "moves":["celebrate", "sandattack", "babydolleyes"], "pokeball": "cherishball"},
 		],
 		tier: "LC",
 	},
@@ -2316,8 +2321,8 @@ exports.BattleFormatsData = {
 		tier: "Bank-NFE",
 	},
 	sceptile: {
-		randomBattleMoves: ["substitute", "gigadrain", "leafstorm", "hiddenpowerice", "focusblast", "hiddenpowerfire"],
-		randomDoubleBattleMoves: ["substitute", "gigadrain", "leafstorm", "hiddenpowerice", "focusblast", "hiddenpowerfire", "protect"],
+		randomBattleMoves: ["gigadrain", "leafstorm", "hiddenpowerice", "focusblast", "hiddenpowerflying"],
+		randomDoubleBattleMoves: ["gigadrain", "leafstorm", "hiddenpowerice", "focusblast", "hiddenpowerfire", "protect"],
 		eventPokemon: [
 			{"generation": 5, "level": 50, "shiny": 1, "isHidden": false, "moves":["leafstorm", "dragonpulse", "focusblast", "rockslide"], "pokeball": "cherishball"},
 		],
@@ -3444,7 +3449,7 @@ exports.BattleFormatsData = {
 		// randomBattleMoves: ["vcreate", "extremespeed", "swordsdance", "earthquake", "dragonascent", "dragonclaw", "dragondance"],
 		randomDoubleBattleMoves: ["vcreate", "extremespeed", "swordsdance", "earthquake", "dragonascent", "dragonclaw", "dragondance", "protect"],
 		requiredMove: "Dragon Ascent",
-		tier: "Bank",
+		tier: "AG",
 	},
 	jirachi: {
 		randomBattleMoves: ["ironhead", "uturn", "firepunch", "icepunch", "trick", "stealthrock", "bodyslam", "toxic", "wish", "substitute"],
@@ -3728,10 +3733,10 @@ exports.BattleFormatsData = {
 	},
 	drifloon: {
 		randomBattleMoves: ["shadowball", "substitute", "calmmind", "hypnosis", "hiddenpowerfighting", "thunderbolt", "destinybond", "willowisp"],
-		tier: "LC Uber",
+		tier: "LC",
 	},
 	drifblim: {
-		randomBattleMoves: ["acrobatics", "willowisp", "substitute", "destinybond", "shadowball"],
+		randomBattleMoves: ["acrobatics", "willowisp", "substitute", "destinybond", "shadowball", "hex"],
 		randomDoubleBattleMoves: ["shadowball", "substitute", "hypnosis", "hiddenpowerfighting", "thunderbolt", "destinybond", "willowisp", "protect"],
 		tier: "New",
 	},
@@ -5135,7 +5140,7 @@ exports.BattleFormatsData = {
 			{"generation": 6, "level": 50, "nature": "Adamant", "ivs": {"hp": 31, "atk": 31, "def": 31, "spa": 1, "spd": 31, "spe": 24}, "isHidden": false, "moves":["earthquake", "knockoff", "uturn", "rocktomb"], "pokeball": "cherishball"},
 		],
 		eventOnly: true,
-		tier: "Bank",
+		tier: "Bank-Uber",
 	},
 	landorustherian: {
 		randomBattleMoves: ["swordsdance", "rockpolish", "earthquake", "stoneedge", "uturn", "superpower", "stealthrock"],
@@ -5674,8 +5679,8 @@ exports.BattleFormatsData = {
 		tier: "Bank-Uber",
 	},
 	zygarde: {
-		randomBattleMoves: ["dragondance", "earthquake", "outrage", "extremespeed", "stoneedge"],
-		randomDoubleBattleMoves: ["dragondance", "landswrath", "extremespeed", "rockslide", "coil", "stoneedge", "glare", "protect"],
+		randomBattleMoves: ["dragondance", "thousandarrows", "outrage", "extremespeed", "irontail"],
+		randomDoubleBattleMoves: ["dragondance", "thousandarrows", "extremespeed", "rockslide", "coil", "stoneedge", "glare", "protect"],
 		eventPokemon: [
 			{"generation": 6, "level": 70, "moves":["crunch", "earthquake", "camouflage", "dragonpulse"]},
 			{"generation": 6, "level": 100, "moves":["landswrath", "extremespeed", "glare", "outrage"], "pokeball": "cherishball"},
@@ -5831,7 +5836,7 @@ exports.BattleFormatsData = {
 		tier: "New",
 	},
 	cutiefly: {
-		tier: "LC",
+		tier: "LC Uber",
 	},
 	ribombee: {
 		randomBattleMoves: ["quiverdance", "bugbuzz", "moonblast", "hiddenpowerfire", "roost", "batonpass"],
@@ -5916,6 +5921,9 @@ exports.BattleFormatsData = {
 	},
 	comfey: {
 		randomBattleMoves: ["aromatherapy", "drainingkiss", "toxic", "synthesis", "uturn"],
+		eventPokemon: [
+			{"generation": 7, "level": 10, "nature": "Jolly", "isHidden": false, "moves":["celebrate", "leechseed", "drainingkiss", "magicalleaf"], "pokeball": "cherishball"},
+		],
 		tier: "New",
 	},
 	oranguru: {

@@ -326,7 +326,7 @@ class Validator {
 					let problem = this.checkLearnset(move, template, lsetData);
 					if (problem) {
 						// Sketchmons hack
-						if (banlistTable['allowonesketch'] && format.noSketch.indexOf(move.name) <= 0 && !set.sketchmonsMove && !move.noSketch && !move.isZ) {
+						if (banlistTable['allowonesketch'] && format.noSketch.indexOf(move.name) < 0 && !set.sketchmonsMove && !move.noSketch && !move.isZ) {
 							set.sketchmonsMove = move.id;
 							continue;
 						}
@@ -344,6 +344,12 @@ class Validator {
 							problemString = problemString.concat(`.`);
 						}
 						problems.push(problemString);
+					}
+					if (move.id === 'hiddenpower' && move.type === 'Fighting') {
+						if (template.gen >= 6 && template.eggGroups[0] === 'Undiscovered' && !template.nfe && (template.baseSpecies !== 'Diancie' || !set.shiny)) {
+							// Legendary Pokemon must have at least 3 perfect IVs in gen 6+
+							problems.push(`${name} must not have Hidden Power Fighting because it starts with 3 perfect IVs because it's a gen 6+ legendary.`);
+						}
 					}
 				}
 			}
@@ -523,6 +529,9 @@ class Validator {
 			};
 			if (!(template.baseSpecies in alolaDex) && !(template.species in alolaDex) && !islandScanList.includes(template.baseSpecies)) {
 				problems.push(template.baseSpecies + " is unreleased in gen 7. (It's not possible to transfer Pokemon to Sun/Moon yet)");
+			}
+			if (isHidden && islandScanList.includes(template.baseSpecies)) {
+				problems.push(template.baseSpecies + "'s hidden ability is unreleased in gen 7. (It's not possible to transfer Pokemon to Sun/Moon yet)");
 			}
 			if (template.species === 'Greninja' && ability.id !== 'battlebond') {
 				problems.push("Regular Greninja is unreleased in gen 7; only Battle Bond Greninja is available. (It's not possible to transfer Pokemon to Sun/Moon yet)");
@@ -801,38 +810,51 @@ class Validator {
 						let eggGroupsSet = new Set(eggGroups);
 						learned = learned.substr(0, 2);
 						// loop through pokemon for possible fathers to inherit the egg move from
-						for (let templateid in tools.data.Pokedex) {
-							let dexEntry = tools.getTemplate(templateid);
+						for (let fatherid in tools.data.Pokedex) {
+							let father = tools.getTemplate(fatherid);
 							// can't inherit from CAP pokemon
-							if (dexEntry.isNonstandard) continue;
+							if (father.isNonstandard) continue;
 							// can't breed mons from future gens
-							if (dexEntry.gen > learnedGen) continue;
+							if (father.gen > learnedGen) continue;
 							// father must be male
-							if (dexEntry.gender === 'N' || dexEntry.gender === 'F') continue;
+							if (father.gender === 'N' || father.gender === 'F') continue;
 							// can't inherit from dex entries with no learnsets
-							if (!dexEntry.learnset) continue;
+							if (!father.learnset) continue;
 							// unless it's supposed to be self-breedable, can't inherit from self, prevos, evos, etc
 							// only basic pokemon have egg moves, so by now all evolutions should be in alreadyChecked
-							if (!fromSelf && alreadyChecked[dexEntry.speciesid]) continue;
-							if (!fromSelf && dexEntry.evos.includes(template.id)) continue;
-							if (!fromSelf && dexEntry.prevo === template.id) continue;
+							if (!fromSelf && alreadyChecked[father.speciesid]) continue;
+							if (!fromSelf && father.evos.includes(template.id)) continue;
+							if (!fromSelf && father.prevo === template.id) continue;
 							// father must be able to learn the move
-							if (!fromSelf && !dexEntry.learnset[moveid] && !dexEntry.learnset['sketch']) continue;
+							let fatherSources = father.learnset[moveid] || father.learnset['sketch'];
+							if (!fromSelf && !fatherSources) continue;
 
 							// must be able to breed with father
-							if (!dexEntry.eggGroups.some(eggGroup => eggGroupsSet.has(eggGroup))) continue;
+							if (!father.eggGroups.some(eggGroup => eggGroupsSet.has(eggGroup))) continue;
 
-							const fatherLatestMoveGen = (dexEntry.learnset[moveid] ? dexEntry.learnset[moveid][0].charAt(0) : dexEntry.learnset['sketch'][0].charAt(0));
-							if (noPastGenBreeding && (dexEntry.tier.startsWith('Bank') || fatherLatestMoveGen !== '7')) continue;
+							// detect unavailable egg moves
+							if (noPastGenBreeding) {
+								const fatherLatestMoveGen = fatherSources[0].charAt(0);
+								if (father.tier.startsWith('Bank') || fatherLatestMoveGen !== '7') continue;
+								atLeastOne = true;
+								break;
+							}
 
 							// we can breed with it
 							atLeastOne = true;
 							if (tradebackEligible && learnedGen === 2 && move.gen <= 1) {
 								// can tradeback
-								sources.push('1ET' + dexEntry.id);
+								sources.push('1ET' + father.id);
 							}
-							sources.push(learned + dexEntry.id);
+							sources.push(learned + father.id);
 							if (limitedEgg !== false) limitedEgg = true;
+						}
+						if (atLeastOne && noPastGenBreeding) {
+							// gen 6+ doesn't have egg move incompatibilities except for certain cases with baby Pokemon
+							learned = learnedGen + 'E' + (template.prevo ? template.id : '');
+							sources.push(learned);
+							limitedEgg = false;
+							continue;
 						}
 						// chainbreeding with itself
 						// e.g. ExtremeSpeed Dragonite
@@ -858,6 +880,7 @@ class Validator {
 								continue;
 							}
 						}
+						if (level < template.eventPokemon[learned.substr(2)].level) continue;
 						sources.push(learned + ' ' + template.id);
 					} else if (learned.charAt(1) === 'D') {
 						// DW moves:

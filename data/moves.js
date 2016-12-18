@@ -1987,7 +1987,7 @@ exports.BattleMovedex = {
 		accuracy: 100,
 		basePower: 130,
 		category: "Special",
-		desc: "Until the user is no longer active, Fire-type users lose their Fire type and pure Fire-type users become Normal type.",
+		desc: "User must be Fire-type. User's Fire-type changes to ???-type until it switches out. User's secondary type (if any) is unaffected even by Roost.",
 		shortDesc: "User's Fire-type is removed until it switches out.",
 		id: "burnup",
 		name: "Burn Up",
@@ -2000,6 +2000,7 @@ exports.BattleMovedex = {
 		self: {
 			onHit: function (pokemon) {
 				pokemon.setType(pokemon.getTypes(true).map(type => type === "Fire" ? "???" : type));
+				this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[from] move: Burn Up');
 			},
 		},
 		secondary: false,
@@ -3055,8 +3056,8 @@ exports.BattleMovedex = {
 			if (pokemon.template.species === 'Darkrai') {
 				return;
 			}
+			this.add('-fail', pokemon, 'move: Dark Void');
 			this.add('-hint', "Only a Pokemon whose form is Darkrai can use this move.");
-			this.add('-fail', pokemon, 'move: Dark Void'); // TODO: client-side
 			return null;
 		},
 		secondary: false,
@@ -8588,10 +8589,12 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {protect: 1, authentic: 1, mystery: 1},
 		onHit: function (target, source) {
+			if (!target.lastMove) return false;
+			let lastMove = this.getMove(target.lastMove);
 			let noInstruct = {
-				instruct:1, // TODO: fill this up
+				beakblast:1, copycat:1, focuspunch:1, instruct:1, mefirst:1, metronome:1, mimic:1, mirrormove:1, outrage:1, petaldance:1, shelltrap:1, thrash:1, // TODO: fill this up
 			};
-			if (!target.lastMove || this.getMove(target.lastMove).isZ || noInstruct[target.lastMove]) {
+			if (noInstruct[lastMove.id] || lastMove.isZ || lastMove.flags['charge'] || lastMove.flags['recharge'] || target.volatiles['beakblast'] || target.volatiles['focuspunch'] || target.volatiles['shelltrap']) {
 				return false;
 			}
 			this.add('-singleturn', target, 'move: Instruct', '[of] ' + source);
@@ -11824,7 +11827,7 @@ exports.BattleMovedex = {
 		name: "Pollen Puff",
 		pp: 15,
 		priority: 0,
-		flags: {protect: 1, mirror: 1},
+		flags: {bullet: 1, protect: 1, mirror: 1},
 		onTryHit: function (target, source, move) {
 			if (source.side === target.side) {
 				move.basePower = 0;
@@ -14967,10 +14970,10 @@ exports.BattleMovedex = {
 			let moves = [];
 			for (let i = 0; i < pokemon.moveset.length; i++) {
 				let move = pokemon.moveset[i].id;
-				let NoSleepTalk = {
-					assist:1, belch:1, bide:1, chatter:1, copycat:1, focuspunch:1, mefirst:1, metronome:1, mimic:1, mirrormove:1, naturepower:1, sketch:1, sleeptalk:1, uproar:1,
+				let noSleepTalk = {
+					assist:1, beakblast:1, belch:1, bide:1, chatter:1, copycat:1, focuspunch:1, mefirst:1, metronome:1, mimic:1, mirrormove:1, naturepower:1, shelltrap:1, sketch:1, sleeptalk:1, uproar:1,
 				};
-				if (move && !(NoSleepTalk[move] || this.getMove(move).flags['charge'])) {
+				if (move && !(noSleepTalk[move] || this.getMove(move).flags['charge'] || (this.getMove(move).isZ && this.getMove(move).basePower !== 1))) {
 					moves.push(move);
 				}
 			}
@@ -18452,8 +18455,8 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		desc: "The user and its party members are protected from damaging attacks made by other Pokemon, including allies, during this turn that target all adjacent foes or all adjacent Pokemon. This move modifies the same 1/X chance of being successful used by other protection moves, where X starts at 1 and triples each time this move is successfully used, but does not use the chance to check for failure. X resets to 1 if this move fails or if the user's last move used is not Detect, Endure, King's Shield, Protect, Quick Guard, Spiky Shield, or Wide Guard. Fails if the user moves last this turn or if this move is already in effect for the user's side.",
-		shortDesc: "Protects allies from multi-target hits this turn.",
+		desc: "The user and its party members are protected from moves made by other Pokemon, including allies, during this turn that target all adjacent foes or all adjacent Pokemon. This move modifies the same 1/X chance of being successful used by other protection moves, where X starts at 1 and triples each time this move is successfully used, but does not use the chance to check for failure. X resets to 1 if this move fails or if the user's last move used is not Baneful Bunker, Detect, Endure, King's Shield, Protect, Quick Guard, Spiky Shield, or Wide Guard. Fails if the user moves last this turn or if this move is already in effect for the user's side.",
+		shortDesc: "Protects allies from multi-target moves this turn.",
 		id: "wideguard",
 		name: "Wide Guard",
 		pp: 10,
@@ -18473,8 +18476,8 @@ exports.BattleMovedex = {
 			},
 			onTryHitPriority: 4,
 			onTryHit: function (target, source, effect) {
-				// Wide Guard blocks damaging spread moves
-				if (effect && (effect.category === 'Status' || (effect.target !== 'allAdjacent' && effect.target !== 'allAdjacentFoes'))) {
+				// Wide Guard blocks all spread moves
+				if (effect && effect.target !== 'allAdjacent' && effect.target !== 'allAdjacentFoes') {
 					return;
 				}
 				this.add('-activate', target, 'move: Wide Guard');

@@ -118,7 +118,7 @@ exports.BattleScripts = {
 		} else if (zMove && move.zMoveEffect === 'heal') {
 			this.heal(pokemon.maxhp, pokemon, pokemon, {id: 'zpower'});
 		} else if (zMove && move.zMoveEffect === 'healreplacement') {
-			pokemon.side.addSideCondition('healingwish', pokemon, move);
+			move.self = {sideCondition: 'healreplacement'};
 		} else if (zMove && move.zMoveEffect === 'clearnegativeboost') {
 			let boosts = {};
 			for (let i in pokemon.boosts) {
@@ -360,17 +360,23 @@ exports.BattleScripts = {
 
 		if (move.stealsBoosts) {
 			let boosts = {};
+			let stolen = false;
 			for (let statName in target.boosts) {
 				let stage = target.boosts[statName];
-				if (stage > 0) boosts[statName] = stage;
+				if (stage > 0) {
+					boosts[statName] = stage;
+					stolen = true;
+				}
 			}
-			this.boost(boosts, pokemon);
+			if (stolen) {
+				this.add('-clearpositiveboost', target, pokemon, 'move: ' + move.name);
+				this.boost(boosts, pokemon);
 
-			for (let statName in boosts) {
-				boosts[statName] = 0;
+				for (let statName in boosts) {
+					boosts[statName] = 0;
+				}
+				target.setBoost(boosts);
 			}
-			target.setBoost(boosts);
-			this.add('-clearpositiveboost', target, pokemon, 'move: ' + move.name);
 		}
 
 		move.totalDamage = 0;
@@ -459,6 +465,8 @@ exports.BattleScripts = {
 		if (move.ohko) this.add('-ohko');
 
 		if (!damage && damage !== 0) return damage;
+
+		this.eachEvent('Update');
 
 		if (target && !move.negateSecondary && !(pokemon.hasAbility('sheerforce') && pokemon.volatiles['sheerforce'])) {
 			this.singleEvent('AfterMoveSecondary', move, null, target, pokemon, move);
@@ -757,9 +765,14 @@ exports.BattleScripts = {
 		let zMoves = [];
 		for (let i = 0; i < pokemon.moves.length; i++) {
 			let move = this.getMove(pokemon.moves[i]);
-			let zMove = this.getZMove(move, pokemon, true) || '';
-			zMoves.push(zMove);
-			if (zMove) atLeastOne = true;
+			let zMoveName = this.getZMove(move, pokemon, true) || '';
+			if (zMoveName) {
+				let zMove = this.getMove(zMoveName);
+				zMoves.push({move: zMoveName, target: zMove.target});
+			} else {
+				zMoves.push(null);
+			}
+			if (zMoveName) atLeastOne = true;
 		}
 		if (atLeastOne) return zMoves;
 	},
@@ -1613,6 +1626,9 @@ exports.BattleScripts = {
 				case 'airslash': case 'oblivionwing':
 					if (hasMove['acrobatics'] || hasMove['bravebird'] || hasMove['hurricane']) rejected = true;
 					break;
+				case 'shadowball':
+					if (hasMove['hex'] && hasMove['willowisp']) rejected = true;
+					break;
 				case 'shadowclaw':
 					if (hasMove['phantomforce'] || (hasMove['shadowball'] && counter.setupType !== 'Physical') || hasMove['shadowsneak']) rejected = true;
 					break;
@@ -1948,7 +1964,7 @@ exports.BattleScripts = {
 			} else if (ability === 'Torrent') {
 				rejectAbility = !counter['Water'];
 			} else if (ability === 'Unburden') {
-				rejectAbility = template.baseStats.spe > 120 || (template.id === 'slurpuff' && !counter.setupType);
+				rejectAbility = !counter.setupType && !hasMove['acrobatics'];
 			}
 
 			if (rejectAbility) {
@@ -2016,8 +2032,7 @@ exports.BattleScripts = {
 		if (template.requiredItems) {
 			if (template.baseSpecies === 'Arceus' && hasMove['judgment']) {
 				// Judgment doesn't change type with Z-Crystals
-				let items = template.requiredItems.filter(item => item.endsWith('Plate'));
-				item = items[this.random(items.length)];
+				item = template.requiredItems[0];
 			} else {
 				item = template.requiredItems[this.random(template.requiredItems.length)];
 			}
@@ -2091,27 +2106,16 @@ exports.BattleScripts = {
 			item = (ability === 'Chlorophyll' && counter.Status < 2) ? 'Life Orb' : 'Heat Rock';
 		} else if (hasMove['lightscreen'] && hasMove['reflect']) {
 			item = 'Light Clay';
-		} else if (hasMove['acrobatics']) {
-			item = 'Flying Gem';
 		} else if ((ability === 'Guts' || hasMove['facade']) && !hasMove['sleeptalk']) {
 			item = (hasType['Fire'] || ability === 'Quick Feet') ? 'Toxic Orb' : 'Flame Orb';
 		} else if (ability === 'Unburden') {
 			if (hasMove['fakeout']) {
 				item = 'Normal Gem';
-			} else if (hasMove['dracometeor'] || hasMove['leafstorm'] || hasMove['overheat']) {
-				item = 'White Herb';
-			} else if (hasMove['substitute'] || counter.setupType) {
-				item = 'Sitrus Berry';
 			} else {
-				item = 'Red Card';
-				for (let m in moves) {
-					let move = this.getMove(moves[m]);
-					if (hasType[move.type] && move.basePower >= 90) {
-						item = move.type + ' Gem';
-						break;
-					}
-				}
+				item = 'Sitrus Berry';
 			}
+		} else if (hasMove['acrobatics']) {
+			item = '';
 
 		// Medium priority
 		} else if (((ability === 'Speed Boost' && !hasMove['substitute']) || (ability === 'Stance Change')) && counter.Physical + counter.Special > 2) {
@@ -2193,6 +2197,7 @@ exports.BattleScripts = {
 			Unreleased: 75,
 			CAP: 75,
 			Uber: 73,
+			'Bank-Uber': 73,
 			AG: 71,
 		};
 		let customScale = {
