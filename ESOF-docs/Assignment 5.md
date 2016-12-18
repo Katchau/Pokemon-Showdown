@@ -45,6 +45,16 @@ No entanto surge uma dúvida quanto ao último teste, discordando da veracidade 
    <img src="https://github.com/Katchau/Pokemon-Showdown/blob/master/ESOF-docs/Resources/bettercodehub%20results/teste1.png?raw=true" />
 </p>
 
+A razão pela qual este teste falha é bipartida: Por um lado, pode ser considerada uma incompatibilidade entre a linguagem do projeto Javascript e a interpretação que o BetterCodeHub faz de 'unidades de código'; Por outro deve-se mesmo à negligência deste princípio na generalidade do código.
+
+Acontece que em Pokémon Showdown quase toda a informação sobre Pokémons, items e outra informação que pertence numa base de dados está armazenada sobre a forma de objetos de Javascript em ficheiros no diretório `data/`. Como se pode verificar, a maior parte dos ficheiros que infrigem esta regra encontram-se em `data/`, como `learnsets.js`, `items.js`, `pokedex.js`, e outros. Isto leva-nos a deduzir que o BetterCodeHub intrepreta esses objetos como unidades de código, embora estes não possam ser executados independentemente.
+
+Somos da opinião que nestes casos isto não contribui para um aumento significativo da dificuldade de manutenção do código, porque a informação é maioritariamente estática e sujeita a poucas alterações.
+
+Dito isto, esta regra é verdadeiramente infringida noutros locais. Analisemos, por exemplo o caso de `randomSet()` em `scripts.js`. Esta função tem 958 linhas, um número cerca de 64 vezes superior às 15 recomendadas.
+
+Este é um problema constante ao longo do código fonte, e um dos principais contribuidores para a diminuição da legibilidade do código.
+
 <p align="center">
    <img src="https://github.com/Katchau/Pokemon-Showdown/blob/master/ESOF-docs/Resources/bettercodehub%20results/teste2.png?raw=true" />
 </p>
