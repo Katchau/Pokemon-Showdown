@@ -10,9 +10,9 @@ Para o último relatório da unidade curricular, procedemos à escolha e, mais t
 
 ### 1.Manutenção de Software
 
-No âmbito de avaliar qualidade de código do nosso projeto, foi utilizado o website [BetterCodeHub](bettercodehub.com). O objetivo principal deste é de testar 10 parâmetros distintos de boas condutas de código, e atribuir uma nota ao projeto que foi avaliado, mencionando quais fatores precisam de ser melhorados no código para poder obter uma avaliação melhor.
+No âmbito de avaliar qualidade de código do nosso projeto, foi utilizado o website [BetterCodeHub](bettercodehub.com). O objetivo principal deste é de testar 10 parâmetros distintos de boas condutas de código, especificamente à escrita, organização, legibilidade, e fácil manipulação de código, e atribuir uma nota ao projeto que foi avaliado, mencionando quais fatores precisam de ser melhorados no código para poder obter uma avaliação melhor.
 
-Os 10 parâmetros de avaliação que o *BetterCode Hub* realiza referem-se à escrita, organização, legibilidade, e facil manipulação de código e são resumidamente os seguintes:
+Resumidamente, os parâmetros a serem avaliados são os seguintes:
 
 - Escrever código de forma simples e organizada;
 - Evitar repetições e a existência de "muros" de código, bem como mantê-lo legível, sem necessidade de haver código inútil.
@@ -21,7 +21,7 @@ Os 10 parâmetros de avaliação que o *BetterCode Hub* realiza referem-se à es
 - Arquitetura com componentes independentes e equilibradas
 - Boa cobertura de Testes Automáticos
 
-Uma vez que esta ferramenta aínda é recente, foram encontrados vários erros(página não carregava, dava erro a analisar) e limitações(limite de 100 mil linhas de código) que nos obrigaram a efetuar alterações no projeto, de forma a que esta podesse ser executada. Como tal, criámos um novo repositório, onde removemos uma parte do projeto menos importante (classes "base de dados" cuja utilidade é de guardar informação de gerações anteriores para jogar modos antigos de jogo), e obtemos a seguinte avaliação:
+Uma vez que esta ferramenta aínda é recente, foram encontrados vários erros(página não carregava, dava erro a analisar) e limitações(limite de 100 mil linhas de código) que nos obrigaram a efetuar alterações no projeto, de forma a que esta podesse ser executada. Como tal, criámos um novo repositório, onde removemos uma parte do projeto menos importante (classes históricas cuja utilidade é de guardar informação de gerações anteriores para jogar modos antigos de jogo), e obtemos a seguinte avaliação:
 
 <p align="center">
    <img src="https://github.com/Katchau/Pokemon-Showdown/blob/master/ESOF-docs/Resources/bettercodehub%20results/bch_grade.png?raw=true" />
@@ -30,15 +30,41 @@ Uma vez que esta ferramenta aínda é recente, foram encontrados vários erros(p
 Como podemos observar, o *Pokémon Showdown* obteve uma nota intermédia, no limiar daquilo a que poderia chamar-se aceitável. Isto indica que existem aspetos onde este projeto pode melhorar bastante. 
 De mencionar que esta avaliação não representa a nota final correta, uma vez que o projeto não foi avaliado na íntegra, como já foi esclarecido no parágrafo anterior, levantando-se assim uma dúvida acerca da legitimidade do teste.
 
-[imagem dos testes que passaram]
+<p align="center">
+   <img src="https://github.com/Katchau/Pokemon-Showdown/blob/master/ESOF-docs/Resources/bettercodehub%20results/testespositivos.png?raw=true" />
+</p>
 
-Na figura anterior estão presentes todos os testes que obtiveram resultados positivos.[falar dos aspetos positivos]
-No entanto, discordamos da veracidade do último teste,visto que ao analisar o código que foi omitido verifica-se a existência de código repetido, vários *code smells* (os próprios ficheiros são protótipos de classes "base de dados"), constantes mágicas, entre outros. Ou seja, seria possível que este teste falhásse, caso fosse possível avaliar o projeto na totalidade.
+Nesta figura estão presentes todos os testes que obtiveram resultados positivos.
+
+Como podemos observar, o *Pokémon Showdown* mantém unidades de interface pequenas, facilitando a perceptibilidade das funções e a sua reutilização. Apresenta também uma boa organização em termos de módulos/funcionalidades, sendo possível identificar e de separar diferentes módulos de forma mais eficaz. No 3º teste, podemos concluir que o *Pokémon Showdown* possui uma boa organização em termos de componentes, sendo esta feita de acordo com as funções que cada componente é responsável. No 4º teste positivo, podemos verificar que este projeto tem uma base de código pequena, relativamente ao nº de pessoas que colabora no projeto, evitando que a responsabilidade de cada pessoa aumente, mantendo o crescimento do projeto ascendente.
+
+No entanto surge uma dúvida quanto ao último teste, discordando da veracidade deste. Isto porque ao analisar o código que foi omitido verifica-se a existência de código repetido, vários *code smells* (os próprios ficheiros são protótipos de classes "base de dados"), constantes mágicas, entre outros. Ou seja, seria provável que este teste falhásse, caso fosse possível avaliar o projeto na totalidade.
+
+
+<p align="center">
+   <img src="https://github.com/Katchau/Pokemon-Showdown/blob/master/ESOF-docs/Resources/bettercodehub%20results/teste1.png?raw=true" />
+</p>
+
+<p align="center">
+   <img src="https://github.com/Katchau/Pokemon-Showdown/blob/master/ESOF-docs/Resources/bettercodehub%20results/teste2.png?raw=true" />
+</p>
+
+<p align="center">
+   <img src="https://github.com/Katchau/Pokemon-Showdown/blob/master/ESOF-docs/Resources/bettercodehub%20results/teste3.png?raw=true" />
+</p>
+
+<p align="center">
+   <img src="https://github.com/Katchau/Pokemon-Showdown/blob/master/ESOF-docs/Resources/bettercodehub%20results/teste6.png?raw=true" />
+</p>
+
+<p align="center">
+   <img src="https://github.com/Katchau/Pokemon-Showdown/blob/master/ESOF-docs/Resources/bettercodehub%20results/teste9.png?raw=true" />
+</p>
 
 
 ### 2. Introdução de uma Nova Funcionalidade
 
-#### 1.1. Escolha da Funcionalidade a Implementar
+#### 2.1. Escolha da Funcionalidade a Implementar
 
 A identificação de uma funcionalidade a implementar em Pokémon-Showdown revelou-se um problema mais complicado do que o anticipado. Isto porque o repositório para o qual decidimos contribuir não guarda todo o código relativo ao jogo, mas apenas o código relativo ao servidor. Isto significa que uma funcionalidade implementada no servidor pode não ser visível ao utilizador sem alterações ao código do cliente.
 
@@ -54,7 +80,7 @@ Restava agora escolher qual seria o comando em específico que queriamos introdu
 
 [Imagem do comando a funcionar]
 
-#### 1.2. Identificação do Código a Modificar
+#### 2.2. Identificação do Código a Modificar
 
 Escolhida a funcionalidade a implementar, era tempo de encontrar no código fonte o sítio adequado para introduzir as alterações.
 
@@ -73,7 +99,7 @@ Isto indicava-nos que este não seria o local adequado para introduzir quaisquer
 
 Seguindo então para `chat-plugins/` deparamo-nos com vários ficheiros. Cada um agrupava comandos que estavam de alguma forma relacionados, por serem semelhantes, por fazerem parte de um mini-jogo, ou por qualquer outra razão que implicasse uma relação lógica entre eles. Após uma breve análise, determinamos que o ficheiro que continha os comandos genéricos e de utilidade se encontravam aglomerados em `info.js`. Era esse, portanto, o ficheiro que viríamos a modificar.
 
-#### 1.3. Implementação da Funcionalidade
+#### 2.3. Implementação da Funcionalidade
 
 Após a identificação do local onde iríamos introduzir as alterações, faltava apenas a parte nuclear deste processo: a codificação da funcionalidade propriamente dita.
 
