@@ -80,7 +80,7 @@ Agora que sabíamos como enviar a resposta, era altura de obter o conteúdo da r
 
 Sendo assim, o código resultante de toda a nossa pesquisa e aquele que submetemos para ser revisto e, esperemos, incorporado no projeto foi:
 
-```
+```javascript
 '!servertime': true,
 servertime: function (target, room, user) {
 	    if (!this.runBroadcast()) return;
