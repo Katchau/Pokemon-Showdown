@@ -10,6 +10,8 @@ Para o último relatório da unidade curricular, procedemos à escolha e, mais t
 
 ### 2.Submissão do *Pull Request*
 
+https://github.com/Zarel/Pokemon-Showdown/pull/3034
+
 ### Conclusão
 
 
