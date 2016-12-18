@@ -126,6 +126,8 @@ servertime: function (target, room, user) {
 
 ### 3.Submissão do *Pull Request*
 
+Foi realizado um [*Pull Request*](https://github.com/Zarel/Pokemon-Showdown/pull/3038) para o github do projeto "Pokémon Showdown", este de momento encontra-se pendente, embora a equipa se tenha mostrado recetiva à alteração sugerida.
+
 ### Conclusão
 
 ##Trabalho realizado por:
