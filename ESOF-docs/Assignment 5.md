@@ -77,6 +77,9 @@ Relativamente ao ficheiro `chat-commands.js` não podemos afirmar o mesmo, embor
    <img src="https://github.com/Katchau/Pokemon-Showdown/blob/master/ESOF-docs/Resources/bettercodehub%20results/teste6.png?raw=true" />
 </p>
 
+O principal fator de falha neste teste deve-se há existência de "código de interface", isto é, código que é utilizado noutros códigos e também utiliza outros códigos na sua construção criando assim uma dependência que, futuramente, poderá ser prejudicial a alterações de código.
+Por exemplo o ficheiro `battle-engine.js` executa o comando *require*, que faz *load* de outro ficheiro, neste caso do `tools.js`. Conexões deste género ocorrem nos ficheiros identificados pelo teste o que conduz ao resultado obtido.
+
 <p align="center">
    <img src="https://github.com/Katchau/Pokemon-Showdown/blob/master/ESOF-docs/Resources/bettercodehub%20results/teste9.png?raw=true" />
 </p>
